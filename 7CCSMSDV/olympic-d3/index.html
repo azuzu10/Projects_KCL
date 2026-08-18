@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>D3 Project</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h2>Olympic Medal Analysis Dashboard</h2>
+
+  <!-- Tooltip -->
+  <div id="tooltip" style="
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    padding: 5px;
+    display: none;
+    pointer-events: none;
+  "></div>
+
+  <!-- Controls -->
+  <div id="top-controls">
+
+    <!-- Country Buttons -->
+    <div id="buttons"></div>
+
+    <!-- Chart Type -->
+    <select id="chartType" onchange="changeChartType()">
+      <option value="line">Line Chart</option>
+      <option value="bar">Bar Chart</option>
+      <option value="area">Area Chart</option>
+    </select>
+
+    <!-- Visualization Selector -->
+    <select id="vizType" onchange="switchVisualization()">
+      <option value="trend">Medal Trends</option>
+      <option value="host">Host Advantage</option>
+      <option value="sport">Sport Dominance</option>
+    </select>
+
+    <label>Sport:</label>
+    <select id="sportSelect" onchange="drawChart()"></select>
+
+  </div>
+
+  <!-- Chart Containers -->
+  <div id="charts">
+
+    <!-- Q1 -->
+    <svg id="trendChart" width="900" height="500"></svg>
+
+    <!-- Q2 -->
+    <svg id="hostChart" width="900" height="500" style="display:none;"></svg>
+
+    <!-- Q3 -->
+    <svg id="sportChart" width="900" height="500" style="display:none;"></svg>
+
+  </div>
+
+  <!-- Info Panels Row -->
+  <div id="info-panels">
+
+    <!-- Data Processed Logic Panel (LEFT) -->
+    <div id="data-logic" class="info-panel">
+      <h3>Data Processed Logic</h3>
+      <p id="logic-text"></p>
+    </div>
+
+    <!-- Chart Description / Insights Panel (RIGHT) -->
+    <div id="chart-description" class="info-panel">
+      <h3 id="desc-title"></h3>
+      <p id="desc-text"></p>
+      <ul id="desc-points"></ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
